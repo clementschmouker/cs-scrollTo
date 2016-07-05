@@ -1,11 +1,12 @@
 var cs_DOMElement = 0;
+
 for(var i = 0; i < document.querySelectorAll("a").length; i += 1) {
   document.querySelectorAll("a[href*='#']:not([href='#'])")[i].addEventListener("click", function(e) { // Will select anchor links only
-    checkClicks(e, 300); //Time in ms
+    checkClicks(e); //Time in ms
   });
 }
 
-function checkClicks(element, timeInMs) {
+function checkClicks(element) {
     element.preventDefault();
     cs_DOMElement = document.getElementById(element.target.getAttribute("href").substring(1));
     scrollSmooth();
