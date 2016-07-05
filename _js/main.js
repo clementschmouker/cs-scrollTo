@@ -9,19 +9,16 @@ var scrollObject = new cs_ScrollObject(300) //time in ms
 
 for(var i = 0; i < document.querySelectorAll("a").length; i += 1) {
   document.querySelectorAll("a[href*='#']:not([href='#'])")[i].addEventListener("click", function(e) { // Will select anchor links only
-    checkClicks(e);
+    e.preventDefault();
+      if(scrollObject.bMoving == false) {
+        scrollObject.bMoving = true;
+        scrollObject.DOMElement = document.getElementById(e.target.getAttribute("href").substring(1));
+        scrollObject.distance = scrollObject.DOMElement.offsetTop - window.pageYOffset;
+        scrollSmooth();
+      }
   });
 }
 
-function checkClicks(element) {
-element.preventDefault();
-  if(scrollObject.bMoving == false) {
-    scrollObject.bMoving = true;
-    scrollObject.DOMElement = document.getElementById(element.target.getAttribute("href").substring(1));
-    scrollObject.distance = scrollObject.DOMElement.offsetTop - window.pageYOffset;
-    scrollSmooth();
-  }
-}
 
 function scrollSmooth() {
   var distanceLeft = scrollObject.DOMElement.offsetTop - window.pageYOffset;
