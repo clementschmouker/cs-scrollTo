@@ -1,5 +1,6 @@
 var cs_DOMElement = 0;
 var bMoving = false;
+var speed = 1000;
 for(var i = 0; i < document.querySelectorAll("a").length; i += 1) {
   document.querySelectorAll("a[href*='#']:not([href='#'])")[i].addEventListener("click", function(e) { // Will select anchor links only
     checkClicks(e); //Time in ms
@@ -16,13 +17,14 @@ element.preventDefault();
 }
 
 function scrollSmooth() {
+  var distance = cs_DOMElement.offsetTop - window.pageYOffset;
   if(window.pageYOffset < cs_DOMElement.offsetTop) {
-    window.scrollBy(0, 1);
-    console.log( window.pageYOffset + " -- " + cs_DOMElement.offsetTop );
+    window.scrollBy(0, distance/(speed/16));
+    console.log( window.pageYOffset - cs_DOMElement.offsetTop );
     requestAnimationFrame(scrollSmooth);
   }
   else if (window.pageYOffset > cs_DOMElement.offsetTop) {
-    window.scrollBy(0, -1);
+    window.scrollBy(0, distance/(speed/16));
     console.log( window.pageYOffset + " -- " + cs_DOMElement.offsetTop );
     requestAnimationFrame(scrollSmooth);
   }
