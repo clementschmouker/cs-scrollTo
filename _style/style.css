@@ -14,7 +14,7 @@ nav ul {
 }
 
 section {
-  min-height:100vh;
+  min-height:75vh;
   width:100;
 }
 
@@ -23,4 +23,13 @@ section {
 }
 #section2 {
   background:#aa30aa;
+}
+#section3 {
+  background:#BADA55;
+}
+#section4 {
+  background:#aa30aa;
+}
+#section5 {
+  background:#BADA55;
 }

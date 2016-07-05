@@ -25,13 +25,17 @@ element.preventDefault();
 
 function scrollSmooth() {
   var distanceLeft = scrollObject.DOMElement.offsetTop - window.pageYOffset;
-  if(distanceLeft < -10 || distanceLeft > 10) {
+  if (window.pageYOffset + window.innerHeight == scrollObject.DOMElement.offsetTop + scrollObject.DOMElement.offsetHeight) {
+    scrollObject.bMoving = false;
+    return;
+  }
+  if( distanceLeft < -10 || distanceLeft > 10 ) {
     window.scrollBy(0, scrollObject.distance/(scrollObject.speed/16));
     requestAnimationFrame(scrollSmooth);
   }
   else {
     window.scrollTo(0, scrollObject.DOMElement.offsetTop);
     scrollObject.bMoving = false;
-    return false;
+    return;
   }
 }
