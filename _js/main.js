@@ -38,4 +38,5 @@ function scrollSmooth() {
     scrollObject.bMoving = false;
     return;
   }
+  console.log(window.pageYOffset + window.innerHeight +" "+ (scrollObject.DOMElement.offsetTop + scrollObject.DOMElement.clientHeight))
 }
