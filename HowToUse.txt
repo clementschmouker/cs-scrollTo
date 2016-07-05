@@ -1,0 +1,10 @@
+English */
+
+You only have to copy and paste the content of main.js into your own js file.
+If you want to change the speed, you have to change the value in the parameter of cs_ScrollObject at line 8, time is in ms
+
+
+French */
+
+Il te suffit simplement de copier et coller le contenu de main.js dans ton propre fichier js.
+Si tu veux changer la vitesse, il te suffit de changer la valeur en paramètre de l'objet cs_ScrollObject à la ligne 8. La valeur est en millisecondes
