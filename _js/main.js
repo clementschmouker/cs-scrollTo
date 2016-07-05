@@ -9,7 +9,7 @@ var scrollObject = new cs_ScrollObject(300) //time in ms
 
 for(var i = 0; i < document.querySelectorAll("a").length; i += 1) {
   document.querySelectorAll("a[href*='#']:not([href='#'])")[i].addEventListener("click", function(e) { // Will select anchor links only
-    checkClicks(e); //Time in ms
+    checkClicks(e);
   });
 }
 
