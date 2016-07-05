@@ -1,8 +1,11 @@
-var cs_DOMElement = 0;
-var bMoving = false;
-var speed = 300;
+var cs_ScrollObject = function( iSpeed ) {
+  this.DOMElement = 0;
+  this.bMoving = false;
+  this.speed = iSpeed;
+  this.distance = 0;
+}
 
-var distance = 0;
+var scrollObject = new cs_ScrollObject(300) //time in ms
 
 for(var i = 0; i < document.querySelectorAll("a").length; i += 1) {
   document.querySelectorAll("a[href*='#']:not([href='#'])")[i].addEventListener("click", function(e) { // Will select anchor links only
@@ -12,23 +15,23 @@ for(var i = 0; i < document.querySelectorAll("a").length; i += 1) {
 
 function checkClicks(element) {
 element.preventDefault();
-  if(bMoving == false) {
-    bMoving = true;
-    cs_DOMElement = document.getElementById(element.target.getAttribute("href").substring(1));
-    distance = cs_DOMElement.offsetTop - window.pageYOffset;
+  if(scrollObject.bMoving == false) {
+    scrollObject.bMoving = true;
+    scrollObject.DOMElement = document.getElementById(element.target.getAttribute("href").substring(1));
+    scrollObject.distance = scrollObject.DOMElement.offsetTop - window.pageYOffset;
     scrollSmooth();
   }
 }
 
 function scrollSmooth() {
-  var distanceLeft = cs_DOMElement.offsetTop - window.pageYOffset;
+  var distanceLeft = scrollObject.DOMElement.offsetTop - window.pageYOffset;
   if(distanceLeft < -10 || distanceLeft > 10) {
-    window.scrollBy(0, distance/(speed/16));
+    window.scrollBy(0, scrollObject.distance/(scrollObject.speed/16));
     requestAnimationFrame(scrollSmooth);
   }
   else {
-    window.scrollTo(0, cs_DOMElement.offsetTop);
-    bMoving = false;
+    window.scrollTo(0, scrollObject.DOMElement.offsetTop);
+    scrollObject.bMoving = false;
     return false;
   }
 }
